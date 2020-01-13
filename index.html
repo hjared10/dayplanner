@@ -2,32 +2,240 @@
 <html lang=eng>
     <head>
         <Title>Work Day Scheduler</Title>
-        <h2>A simple calender giving your day organization and order.</h2>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style>
-    #nineone {
-        background-color: red;
+    .navbar{
+    color: white;
     }
-    #ninetwo{
-        background-color: royalblue;
+    #ninetext{
+        width: 100%;
+        
     }
-    #ninethree{
-        background-color: seagreen;
+    #buttonnine{
+        width: 100%;
     }
+    
+
 </style>
     </head>
-    <body>
+    <body onload="day();">
         <nav class="navbar navbar-dark bg-dark"
-<a class="navbar-brand" href="#">Workday Scheduler</a></nav>
+<a class="navbar-brand" href="#">Workday Scheduler</a><div id="navt"></div></nav>
         <div class = "container">
             <div class="row">
-                <div class="col-lg-2" id="ninethree">this is the first div</div>
-                <div class="col-lg-8 mx-auto" id="nineone">this is the nineone div</div>
-                <div class="col-lg-2" id="ninetwo">this is the last div</div>
+                <div class="col-lg-2" id="ninethree">9 A.M.</div>
+                <div class="col-lg-8 mx-auto" id="nineone"><input type="text" id="ninetext"></div>
+                <div class="col-lg-2" id="ninetwo"><button id="nine" onClick="ninesave()">Save</button></div>
+                <div id="nineenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="tenthree">10 A.M.</div>
+                <div class="col-lg-8 mx-auto" id="tenone"><input type="text" id="tentext"></div>
+                <div class="col-lg-2" id="tentwo"><button id="ten" onClick="tensave()">Save</button></div>
+                <div id="tenenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="eleventhree">11 A.M.</div>
+                <div class="col-lg-8 mx-auto" id="elevenone"><input type="text" id="eleventext"></div>
+                <div class="col-lg-2" id="eleventwo"><button id="eleven" onClick="elevensave()">Save</button></div>
+                <div id="elevenenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="twelvethree">12 P.M.</div>
+                <div class="col-lg-8 mx-auto" id="twelveone"><input type="text" id="twelvetext"></div>
+                <div class="col-lg-2" id="twelvetwo"><button id="twelve" onClick="twelvesave()">Save</button></div>
+                <div id="twelveenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="onethree">1 P.M.</div>
+                <div class="col-lg-8 mx-auto" id="oneone"><input type="text" id="onetext"></div>
+                <div class="col-lg-2" id="onetwo"><button id="one" onClick="onesave()">Save</button></div>
+                <div id="oneenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="twothree">2 P.M.</div>
+                <div class="col-lg-8 mx-auto" id="twoone"><input type="text" id="twotext"></div>
+                <div class="col-lg-2" id="twotwo"><button id="two" onClick="twosave()">Save</button></div>
+                <div id="twoenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="threethree">3 P.M.</div>
+                <div class="col-lg-8 mx-auto" id="threeone"><input type="text" id="threetext"></div>
+                <div class="col-lg-2" id="threetwo"><button id="three" onClick="threesave()">Save</button></div>
+                <div id="threeenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="fourthree">4 P.M.</div>
+                <div id="fourone" class="col-lg-8 mx-auto"><input type="text" id="fourtext"></div>
+                <div class="col-lg-2" id="fourtwo"><button id="four" onClick="foursave()">Save</button></div>
+                <div id="fourenter"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2" id="fivethree">5 P.M.</div>
+                <div class="col-lg-8 mx-auto" id="fiveone"><input type="text" id="fivetext"></div>
+                <div class="col-lg-2" id="fivetwo"><button id="five" onClick="savefive()">Save</button></div>
+                <div id="fiveenter"></div>
             </div>
             </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
     <script type="text/javascript">
+
+var niner = localStorage.getItem('nine');
+var tenr = localStorage.getItem('ten');
+var elevenr = localStorage.getItem('eleven');
+var twelver = localStorage.getItem('twelve');
+var oner = localStorage.getItem('one');
+var twor = localStorage.getItem('two');
+var threer = localStorage.getItem('three');
+var fourr = localStorage.getItem('four');
+var fiver = localStorage.getItem('five');
+
+function day(){
+    var today = new Date();
+    var time = today.getHours();
+    console.log(time)
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+document.getElementById("navt").innerHTML = (today);
+console.log(today);
+document.getElementById('nineenter').innerHTML = (niner);
+document.getElementById('tenenter').innerHTML = (tenr);
+document.getElementById('elevenenter').innerHTML = (elevenr);
+document.getElementById('twelveenter').innerHTML = (twelver);
+document.getElementById('oneenter').innerHTML = (oner);
+document.getElementById('twoenter').innerHTML = (twor);
+document.getElementById('threeenter').innerHTML = (threer);
+document.getElementById('fourenter').innerHTML = (fourr);
+document.getElementById('fiveenter').innerHTML = (fiver);
+
+if (time<9){
+    document.getElementById("ninethree").style.color = 'red';} else if
+    (time ===9) {document.getElementById("ninethree").style.color = 'green';} else if (time>9) {
+        document.getElementById("ninethree").style.color = 'blue';
+    }
+
+    if (time<10){
+    document.getElementById("tenthree").style.color = 'red';} else if
+    (time ===10) {document.getElementById("tenthree").style.color = 'green';} else if (time>10) {
+        document.getElementById("tenthree").style.color = 'blue';
+    }
+    if (time<11){
+    document.getElementById("eleventhree").style.color = 'red';} else if
+    (time ===11) {document.getElementById("eleventhree").style.color = 'green';} else if (time>11) {
+        document.getElementById("eleventhree").style.color = 'blue';
+    }
+    if (time<'12'){
+    document.getElementById("twelventhree").style.color = 'red';} else if
+    (time ===12) {document.getElementById("twelvethree").style.color = 'green';} else if (time>'12') {
+        document.getElementById("twelvethree").style.color = 'blue';
+    }
+    if (time<'13'){
+    document.getElementById("onethree").style.color = 'red';} else if
+    (time ===13) {document.getElementById("onethree").style.color = 'green';} else if (time>'13') {
+        document.getElementById("onethree").style.color = 'blue';}
+        if (time<'14'){
+    document.getElementById("twothree").style.color = 'red';} else if
+    (time ===14) {document.getElementById("twothree").style.color = 'green';} else if (time>'14') {
+        document.getElementById("twothree").style.color = 'blue';}
+        if (time<'15'){
+    document.getElementById("threethree").style.color = 'red';} else if
+    (time ===15) {document.getElementById("threethree").style.color = 'green';} else if (time>'15') {
+        document.getElementById("threethree").style.color = 'blue';}
+
+        if (time<'16'){
+    document.getElementById("fourthree").style.color = 'red';} else if
+    (time ===16) {document.getElementById("fourthree").style.color = 'green';} else if (time>'16') {
+        document.getElementById("fourthree").style.color = 'blue';}
+
+        if (time<'17'){
+    document.getElementById("fivethree").style.color = 'red';} else if
+    (time ===17) {document.getElementById("fivethree").style.color = 'green';} else if (time>'17') {
+        document.getElementById("fivethree").style.color = 'blue';}
+}
+
+
+function ninesave(){
+
+    var ninev=document.getElementById('ninetext').value;
+    console.log(ninev);
+    document.getElementById('nineenter').innerHTML=ninev;
+    localStorage.setItem('nine', ninev);
+
+}
+
+function tensave(){
+
+var tenv=document.getElementById('tentext').value;
+console.log(tenv)
+document.getElementById('tenenter').innerHTML=tenv;
+localStorage.setItem('ten', tenv);
+
+}
+
+function elevensave(){
+
+var elevenv=document.getElementById('eleventext').value;
+console.log(elevenv);
+document.getElementById('elevenenter').innerHTML=elevenv;
+localStorage.setItem('eleven', elevenv);
+
+}
+
+function twelvesave(){
+
+var twelvev=document.getElementById('twelvetext').value;
+console.log(twelvev);
+document.getElementById('twelveenter').innerHTML=twelvev;
+localStorage.setItem('twelve', twelvev);
+
+}
+
+function onesave(){
+
+var onev=document.getElementById('onetext').value;
+console.log(onev);
+document.getElementById('oneenter').innerHTML=onev;
+localStorage.setItem('one', onev);
+
+}
+
+function twosave(){
+
+var twov=document.getElementById('twotext').value;
+console.log(twov);
+document.getElementById('twoenter').innerHTML=twov;
+localStorage.setItem('two', twov);
+
+}
+
+function threesave(){
+
+var threev=document.getElementById('threetext').value;
+console.log(threev);
+document.getElementById('threeenter').innerHTML=threev;
+localStorage.setItem('three', threev);
+
+}
+
+function foursave(){
+
+var fourv=document.getElementById('fourtext').value;
+console.log(fourv);
+document.getElementById('fourenter').innerHTML=fourv;
+localStorage.setItem('four', fourv);
+
+}
+
+
+function savefive(){
+    var fivev=document.getElementById('fivetext').value;
+    document.getElementById('fiveenter').innerHTML=fivev;
+    localStorage.setItem('five', fivev)
+}
+
     </script>
     </body>
 </html>
